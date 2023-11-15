@@ -1,0 +1,1 @@
+# Tauri + Next.js Template
