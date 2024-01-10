@@ -15,7 +15,7 @@ export default function Greet() {
       <h1>{name}</h1>
       <button
         onClick={() => {
-          createUser("Monty Beaumont");
+          createUser("Sabry Awad");
         }}
       >
         Create User!
