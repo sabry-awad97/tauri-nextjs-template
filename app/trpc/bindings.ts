@@ -4,6 +4,6 @@ export type Procedures = {
     queries: 
         { key: "greet", input: string, result: string },
     mutations: 
-        { key: "createUser", input: string, result: { id: number; name: string } },
+        { key: "createUser", input: string, result: { id: string; display_name: string } },
     subscriptions: never
 };
