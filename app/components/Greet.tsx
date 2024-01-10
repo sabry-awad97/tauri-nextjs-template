@@ -1,17 +1,25 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import * as commands from "../types/bindings";
+import rspc from "../trpc/client";
 
 export default function Greet() {
-  const [greeting, setGreeting] = useState("");
+  const { data: name } = rspc.useQuery(["greet", "World"]);
+  const { mutate: createUser } = rspc.useMutation("createUser", {
+    onSuccess: (data) => {
+      console.log("User created!", data);
+    },
+  });
 
-  useEffect(() => {
-    commands
-      .greet("World")
-      .then((result) => setGreeting(result))
-      .catch(console.error);
-  }, []);
-
-  return <h1>{greeting}</h1>;
+  return (
+    <div>
+      <h1>{name}</h1>
+      <button
+        onClick={() => {
+          createUser("Monty Beaumont");
+        }}
+      >
+        Create User!
+      </button>
+    </div>
+  );
 }
